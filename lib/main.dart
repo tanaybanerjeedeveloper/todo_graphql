@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:todo_graphql_app/screens/home/presentation/home_screen.dart';
+import 'package:todo_graphql_app/screens/login/presentation/login_screen.dart';
 import 'package:todo_graphql_app/screens/registration/presentation/register_screen.dart';
 
 void main() async {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         //useMaterial3: true,
       ),
       //home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: RegisterScreen(),
+      home: LoginScreen(),
     );
   }
 }

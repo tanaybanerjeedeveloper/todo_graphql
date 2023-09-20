@@ -1,0 +1,27 @@
+2023/09/20-09:59:27.684 a803 Creating DB /private/var/folders/2j/dl96m8ld5yl4sgzhpqf_x6y00000gn/T/flutter_tools.37NUpd/flutter_tools_chrome_device.2GgosA/Default/IndexedDB/https_teams.microsoft.com_0.indexeddb.leveldb since it was missing.
+2023/09/20-09:59:27.695 a803 Reusing MANIFEST /private/var/folders/2j/dl96m8ld5yl4sgzhpqf_x6y00000gn/T/flutter_tools.37NUpd/flutter_tools_chrome_device.2GgosA/Default/IndexedDB/https_teams.microsoft.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/09/20-09:59:28.778 b503 Level-0 table #5: started
+2023/09/20-09:59:28.786 b503 Level-0 table #5: 65304 bytes OK
+2023/09/20-09:59:28.793 b503 Delete type=0 #3
+2023/09/20-09:59:28.794 b503 Manual compaction at level-0 from '\x00&\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00'\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/09/20-09:59:53.669 b503 Level-0 table #7: started
+2023/09/20-09:59:53.679 b503 Level-0 table #7: 978913 bytes OK
+2023/09/20-09:59:53.692 b503 Delete type=0 #4
+2023/09/20-09:59:53.693 a803 Manual compaction at level-0 from '\x009\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00:\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/09/20-10:00:09.137 b603 Level-0 table #9: started
+2023/09/20-10:00:09.142 b603 Level-0 table #9: 558 bytes OK
+2023/09/20-10:00:09.149 b603 Delete type=0 #6
+2023/09/20-10:00:09.149 b503 Manual compaction at level-0 from '\x00;\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00<\x00\x00\x00' @ 0 : 0; will stop at '\x00;\x00\x00\x05' @ 13767 : 1
+2023/09/20-10:00:09.149 b503 Compacting 1@0 + 1@1 files
+2023/09/20-10:00:09.158 b503 Generated table #10@0: 5390 keys, 467829 bytes
+2023/09/20-10:00:09.158 b503 Compacted 1@0 + 1@1 files => 467829 bytes
+2023/09/20-10:00:09.164 b503 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/09/20-10:00:09.164 b503 Delete type=2 #9
+2023/09/20-10:00:09.164 a803 Manual compaction at level-0 from '\x00;\x00\x00\x05' @ 13767 : 1 .. '\x00<\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/09/20-10:00:09.843 8503 Compacting 1@1 + 1@2 files
+2023/09/20-10:00:09.851 8503 Generated table #11@1: 3024 keys, 470944 bytes
+2023/09/20-10:00:09.851 8503 Compacted 1@1 + 1@2 files => 470944 bytes
+2023/09/20-10:00:09.856 8503 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/09/20-10:00:09.856 8503 Delete type=2 #7
+2023/09/20-10:00:09.856 8503 Delete type=2 #10
+2023/09/20-10:00:09.856 8503 Delete type=2 #5

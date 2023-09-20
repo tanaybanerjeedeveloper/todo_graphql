@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_graphql_app/graphql_config.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:todo_graphql_app/utils/http_link.dart';
 
 class RegisterRepository {
   // static GraphQLConfig graphQLConfig = GraphQLConfig();
@@ -14,7 +15,7 @@ class RegisterRepository {
     print(dob);
     print(gender);
     print(password);
-    HttpLink link = HttpLink("http://localhost:8000/graphql");
+    //HttpLink link = HttpLink("http://localhost:8000/graphql");
     GraphQLClient qlClient = GraphQLClient(
       // craete a graphql client
       link: link,
@@ -26,9 +27,9 @@ class RegisterRepository {
     try {
       QueryResult result = await qlClient.mutate(
         MutationOptions(
-            fetchPolicy: FetchPolicy.networkOnly,
-            document: gql(
-                ''' mutation Mutation(\$name: String!, \$email: String!, \$dob: Date!, \$gender: String!, \$password: String!){
+          fetchPolicy: FetchPolicy.networkOnly,
+          document: gql(
+              ''' mutation Mutation(\$name: String!, \$email: String!, \$dob: Date!, \$gender: String!, \$password: String!){
         registerUser(name: \$name, email: \$email, dob: \$dob, gender: \$gender, password: \$password) {
         token
         user {
@@ -37,15 +38,16 @@ class RegisterRepository {
         name
         }}
         }'''
-                // as tou graphql need query string
-                ),
-            variables: {
-              "name": name,
-              "email": email,
-              "dob": dob,
-              "gender": gender,
-              "password": password
-            }),
+              // as tou graphql need query string
+              ),
+          variables: {
+            "name": name,
+            "email": email,
+            "dob": dob,
+            "gender": gender,
+            "password": password
+          },
+        ),
       );
       print('result: $result');
       if (result.hasException) {

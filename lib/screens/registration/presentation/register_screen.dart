@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_graphql_app/screens/home/presentation/home_screen.dart';
 import 'package:todo_graphql_app/screens/registration/presentation/resgister_controller.dart';
 
 class RegisterScreen extends ConsumerStatefulWidget {
@@ -41,6 +42,16 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Text(
+                  'Create New Account',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
                 TextField(
                   controller: _nameController,
                   decoration: InputDecoration(labelText: 'Your Name'),
@@ -82,31 +93,43 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 50,
                 ),
-                ElevatedButton(
-                  onPressed: () async {
-                    final success = await ref
-                        .read(registerControllerProvider.notifier)
-                        .register(
-                            _nameController.text,
-                            _emailController.text,
-                            _dobController.text,
-                            _genderController.text,
-                            _passwordController.text);
-                    print('success: $success');
-                    // if(success) {
-
-                    // }
-                  },
-                  child: (state.isLoading)
-                      ? Padding(
-                          padding: EdgeInsets.all(5),
-                          child: CircularProgressIndicator(
-                            color: Colors.white,
-                          ),
-                        )
-                      : Text('Save'),
+                Container(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 20.0),
+                    ),
+                    onPressed: () async {
+                      final success = await ref
+                          .read(registerControllerProvider.notifier)
+                          .register(
+                              _nameController.text,
+                              _emailController.text,
+                              _dobController.text,
+                              _genderController.text,
+                              _passwordController.text);
+                      print('success: $success');
+                      if (success) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MyHomePage(
+                                    title: 'something',
+                                  )),
+                        );
+                      }
+                    },
+                    child: (state.isLoading)
+                        ? Padding(
+                            padding: EdgeInsets.all(5),
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          )
+                        : Text('Save'),
+                  ),
                 ),
               ],
             ),

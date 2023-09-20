@@ -695,7 +695,7 @@
             "outputFile": "com.example.todo_graphql_app-merged_res-11:/values-night-v8_values-night-v8.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/tanaybanerjee/Desktop/apps/todo_graphql_app/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/tanaybanerjee/Desktop/apps/todo_graphql/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
@@ -1117,7 +1117,7 @@
                     }
                 },
                 {
-                    "source": "/Users/tanaybanerjee/Desktop/apps/todo_graphql_app/android/app/src/main/res/values/styles.xml",
+                    "source": "/Users/tanaybanerjee/Desktop/apps/todo_graphql/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

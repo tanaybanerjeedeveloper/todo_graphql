@@ -42,7 +42,7 @@
                     }
                 },
                 {
-                    "source": "/Users/tanaybanerjee/Desktop/apps/todo_graphql_app/android/app/src/main/res/values/styles.xml",
+                    "source": "/Users/tanaybanerjee/Desktop/apps/todo_graphql/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
