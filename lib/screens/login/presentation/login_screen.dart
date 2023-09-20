@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:todo_graphql_app/routing/app_router.dart';
 import 'package:todo_graphql_app/screens/home/presentation/home_screen.dart';
 import 'package:todo_graphql_app/screens/login/presentation/login_controller.dart';
 import 'package:todo_graphql_app/screens/registration/presentation/register_screen.dart';
@@ -75,13 +77,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               _emailController.text, _passwordController.text);
                       print('success: $success');
                       if (success) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MyHomePage(
-                                    title: "ghhj",
-                                  )),
-                        );
+                        context.pushNamed(AppRoute.home.name);
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => MyHomePage()),
+                        // );
                       }
                     },
                     child: (state.isLoading)
@@ -102,10 +102,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => RegisterScreen()),
-                    );
+                    context.pushNamed(AppRoute.register.name);
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => RegisterScreen()),
+                    // );
                   },
                   child: Text('Create New account'),
                 ),

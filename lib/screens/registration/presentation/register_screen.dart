@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:todo_graphql_app/routing/app_router.dart';
 import 'package:todo_graphql_app/screens/home/presentation/home_screen.dart';
 import 'package:todo_graphql_app/screens/registration/presentation/resgister_controller.dart';
 
@@ -112,13 +114,11 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                               _passwordController.text);
                       print('success: $success');
                       if (success) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MyHomePage(
-                                    title: 'something',
-                                  )),
-                        );
+                        context.pushNamed(AppRoute.home.name);
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => MyHomePage()),
+                        // );
                       }
                     },
                     child: (state.isLoading)
