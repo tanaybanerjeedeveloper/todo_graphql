@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todo_graphql_app/graphql_service.dart';
+import 'package:todo_graphql_app/local_storage.dart';
 import 'package:todo_graphql_app/routing/app_router.dart';
 import 'package:todo_graphql_app/screens/home/presentation/home_screen.dart';
 import 'package:todo_graphql_app/screens/login/presentation/login_screen.dart';
@@ -10,6 +12,8 @@ import 'package:todo_graphql_app/screens/registration/presentation/register_scre
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initHiveForFlutter();
+  // await graphQLService.init();
+  await localStorageNew.init();
   runApp(
     const ProviderScope(
       child: const MyApp(),
