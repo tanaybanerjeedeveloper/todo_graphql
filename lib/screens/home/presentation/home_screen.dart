@@ -35,10 +35,9 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              var a = localStorageNew.getString('token');
-              print(a);
+              // var a = localStorageNew.getString('token');
+              // print(a);
             },
-            tooltip: 'Increment',
             child: const Icon(Icons.add),
           ), // This trailing comma makes auto-formatting nicer for build methods.
         );
