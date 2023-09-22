@@ -1,16 +1,22 @@
-2023/09/21-13:21:47.517 3d03 Reusing MANIFEST /private/var/folders/2j/dl96m8ld5yl4sgzhpqf_x6y00000gn/T/flutter_tools.6sA3Ph/flutter_tools_chrome_device.ptPdWL/Default/Local Storage/leveldb/MANIFEST-000001
-2023/09/21-13:21:47.518 3d03 Recovering log #30
-2023/09/21-13:21:47.518 3d03 Reusing old log /private/var/folders/2j/dl96m8ld5yl4sgzhpqf_x6y00000gn/T/flutter_tools.6sA3Ph/flutter_tools_chrome_device.ptPdWL/Default/Local Storage/leveldb/000030.log 
-2023/09/21-13:21:47.519 3d03 Delete type=0 #12
-2023/09/21-13:21:47.519 3d03 Delete type=0 #3
-2023/09/21-13:21:47.519 3d03 Delete type=2 #17
-2023/09/21-13:21:47.519 3d03 Delete type=2 #7
-2023/09/21-13:21:47.519 3d03 Delete type=2 #13
-2023/09/21-13:21:47.519 3d03 Delete type=2 #11
-2023/09/21-13:21:47.519 3d03 Delete type=2 #9
-2023/09/21-13:21:47.519 3d03 Delete type=2 #22
-2023/09/21-13:21:47.519 3d03 Delete type=2 #19
-2023/09/21-13:21:47.519 3d03 Delete type=2 #24
-2023/09/21-13:21:47.519 3d03 Delete type=0 #26
-2023/09/21-13:21:47.519 3d03 Delete type=0 #18
-2023/09/21-13:21:47.519 3d03 Delete type=0 #23
+2023/09/21-17:22:50.957 2c03 Reusing MANIFEST /private/var/folders/2j/dl96m8ld5yl4sgzhpqf_x6y00000gn/T/flutter_tools.ZhGDU8/flutter_tools_chrome_device.Y68g28/Default/Local Storage/leveldb/MANIFEST-000001
+2023/09/21-17:22:50.958 2c03 Recovering log #30
+2023/09/21-17:22:50.958 2c03 Reusing old log /private/var/folders/2j/dl96m8ld5yl4sgzhpqf_x6y00000gn/T/flutter_tools.ZhGDU8/flutter_tools_chrome_device.Y68g28/Default/Local Storage/leveldb/000030.log 
+2023/09/21-17:22:50.959 2c03 Delete type=0 #12
+2023/09/21-17:22:50.959 2c03 Delete type=0 #3
+2023/09/21-17:22:50.959 2c03 Delete type=2 #17
+2023/09/21-17:22:50.959 2c03 Delete type=2 #7
+2023/09/21-17:22:50.959 2c03 Delete type=2 #13
+2023/09/21-17:22:50.959 2c03 Delete type=2 #11
+2023/09/21-17:22:50.959 2c03 Delete type=2 #9
+2023/09/21-17:22:50.959 2c03 Delete type=2 #22
+2023/09/21-17:22:50.959 2c03 Delete type=2 #19
+2023/09/21-17:22:50.959 2c03 Delete type=2 #24
+2023/09/21-17:22:50.959 2c03 Delete type=0 #26
+2023/09/21-17:22:50.959 2c03 Delete type=0 #18
+2023/09/21-17:22:50.959 2c03 Delete type=0 #23
+2023/09/21-17:46:30.701 2c03 Level-0 table #34: started
+2023/09/21-17:46:30.707 2c03 Level-0 table #34: 53665 bytes OK
+2023/09/21-17:46:30.714 2c03 Delete type=0 #30
+2023/09/21-17:48:19.540 3b03 Level-0 table #36: started
+2023/09/21-17:48:19.547 3b03 Level-0 table #36: 44497 bytes OK
+2023/09/21-17:48:19.555 3b03 Delete type=0 #33

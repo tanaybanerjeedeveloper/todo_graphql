@@ -1,4 +1,16 @@
-2023/09/20-12:22:08.835 f803 Reusing MANIFEST /private/var/folders/2j/dl96m8ld5yl4sgzhpqf_x6y00000gn/T/flutter_tools.ig07Ft/flutter_tools_chrome_device.MEgzWY/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/09/20-12:22:08.835 f803 Recovering log #4
-2023/09/20-12:22:08.838 f803 Reusing old log /private/var/folders/2j/dl96m8ld5yl4sgzhpqf_x6y00000gn/T/flutter_tools.ig07Ft/flutter_tools_chrome_device.MEgzWY/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000004.log 
-2023/09/20-12:22:08.838 f803 Delete type=0 #3
+2023/09/21-18:00:49.995 8603 Reusing MANIFEST /private/var/folders/2j/dl96m8ld5yl4sgzhpqf_x6y00000gn/T/flutter_tools.ZhGDU8/flutter_tools_chrome_device.Y68g28/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/09/21-18:00:49.995 8603 Recovering log #4
+2023/09/21-18:00:50.002 8603 Reusing old log /private/var/folders/2j/dl96m8ld5yl4sgzhpqf_x6y00000gn/T/flutter_tools.ZhGDU8/flutter_tools_chrome_device.Y68g28/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000004.log 
+2023/09/21-18:00:50.002 8603 Delete type=0 #3
+2023/09/21-18:04:57.166 8603 Level-0 table #8: started
+2023/09/21-18:04:57.176 8603 Level-0 table #8: 1300779 bytes OK
+2023/09/21-18:04:57.186 8603 Delete type=0 #4
+2023/09/21-18:04:57.187 8603 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2023/09/21-18:04:57.187 8603 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x0b\x00\x00\xc8\x05\x00m\x00e\x00d\x00i\x00a' @ 1238 : 1
+2023/09/21-18:04:57.187 8603 Compacting 1@1 + 1@2 files
+2023/09/21-18:04:57.193 8603 Generated table #9@1: 385 keys, 47155 bytes
+2023/09/21-18:04:57.193 8603 Compacted 1@1 + 1@2 files => 47155 bytes
+2023/09/21-18:04:57.197 8603 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/09/21-18:04:57.198 8603 Delete type=2 #5
+2023/09/21-18:04:57.198 8603 Delete type=2 #8
+2023/09/21-18:04:57.198 8603 Manual compaction at level-1 from '\x00\x0b\x00\x00\xc8\x05\x00m\x00e\x00d\x00i\x00a' @ 1238 : 1 .. (end); will stop at (end)

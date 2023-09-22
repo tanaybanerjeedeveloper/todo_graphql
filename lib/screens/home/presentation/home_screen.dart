@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_graphql_app/local_storage.dart';
 import 'package:todo_graphql_app/screens/home/data/home_repository.dart';
 import 'package:todo_graphql_app/screens/home/presentation/todo_widget.dart';
+import 'package:todo_graphql_app/widgets/addtodo_form.dart';
 
 class MyHomePage extends ConsumerStatefulWidget {
   //const MyHomePage({super.key, required this.title});
@@ -16,6 +17,7 @@ class MyHomePage extends ConsumerStatefulWidget {
 class _MyHomePageState extends ConsumerState<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final mediaQiuery = MediaQuery.of(context).size;
     final dataValue = ref.watch(fetchToDosProvider);
 
     return dataValue.when(
@@ -37,6 +39,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
             onPressed: () {
               // var a = localStorageNew.getString('token');
               // print(a);
+              _openForm(context);
             },
             child: const Icon(Icons.add),
           ), // This trailing comma makes auto-formatting nicer for build methods.
@@ -50,6 +53,21 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           width: double.infinity,
           height: 50,
           child: Text('Error'),
+        ),
+      ),
+    );
+  }
+
+  void _openForm(ctx) {
+    showDialog(
+      context: context,
+      builder: (ctx) => Dialog(
+        insetPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        // insetPadding: EdgeInsets.all(),
+        child: SizedBox(
+          width: 400,
+          height: 400,
+          child: AddTodoForm(),
         ),
       ),
     );
