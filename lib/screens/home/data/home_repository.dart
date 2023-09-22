@@ -4,6 +4,7 @@ import 'package:todo_graphql_app/screens/home/domain/todo_model.dart';
 import 'package:todo_graphql_app/utils/http_link.dart';
 
 class HomeRepository {
+  List<Todo> todos = [];
   Util util = Util();
   Future<List> fetchToDos() async {
     try {
@@ -28,7 +29,7 @@ query GetTodosByUser {
       if (res == null || res.isEmpty) {
         return [];
       } else {
-        List<Todo> todos = res
+        todos = res
             .map<Todo>((item) => Todo(
                 description: item["description"],
                 id: item["id"],
@@ -41,6 +42,33 @@ query GetTodosByUser {
       throw Exception('Something went wrong');
     }
   }
+
+  Future<void> createTodo(String? title, String? description) async {
+    try {
+      QueryResult result = await util.getGQLAuthClient().mutate(MutationOptions(
+            fetchPolicy: FetchPolicy.networkOnly,
+            document: gql('''
+    mutation Mutation(\$title: String!, \$description: String!) {
+  createTodo(title: \$title, description: \$description) {
+    title
+  }
+}
+'''),
+            variables: {"title": title, "description": description},
+          ));
+      if (result.hasException) {
+        throw Exception(result.exception);
+      } else {
+        // var data = result.data?["createTodo"];
+        // Todo todoData.title = data
+        print('success from repo');
+      }
+    } catch (error) {
+      print('failed from repo');
+
+      throw Exception('something went wrong!!');
+    }
+  }
 }
 
 final homeRepositoryProvider = Provider<HomeRepository>((ref) {
@@ -51,3 +79,8 @@ final fetchToDosProvider = FutureProvider<List>((ref) async {
   final homeRepository = ref.watch(homeRepositoryProvider);
   return homeRepository.fetchToDos();
 });
+
+// final createTodoProvider = FutureProvider<void>((ref) async {
+//    final homeRepository = ref.watch(homeRepositoryProvider);
+//   return homeRepository.createTodo(title, description);
+// });
