@@ -4,7 +4,7 @@
             "outputFile": "com.example.todo_graphql_app-mergeDebugResources-9:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/tanaybanerjee/Desktop/apps/todo_graphql/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/tanaybanerjee/Desktop/todo_graphql/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

@@ -7,72 +7,62 @@ import 'package:todo_graphql_app/screens/home/presentation/todo_widget.dart';
 import 'package:todo_graphql_app/widgets/addtodo_form.dart';
 
 class MyHomePage extends ConsumerStatefulWidget {
-  //const MyHomePage({super.key, required this.title});
-
-  //final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends ConsumerState<MyHomePage> {
-  @override
-  void initState() {
-    // TODO: implement initState
+  //late Stream dataValue;
 
-    setState(() {});
-  }
-
-  void reload() {
-    setState(() {});
-  }
+  // Stream _getData() async* {
+  //   dataValue = await ref.watch(homeRepositoryProvider).watchToDos();
+  //   yield dataValue;
+  // }
 
   @override
   Widget build(BuildContext context) {
     print('object');
-    final mediaQiuery = MediaQuery.of(context).size;
-    final dataValue = ref.watch(fetchToDosProvider);
 
-    return dataValue.when(
-      data: (data) {
-        print('data: $data');
-        return Scaffold(
-          appBar: AppBar(
-            // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-            title: Text('TODO'),
-          ),
-          body: ListView.builder(
-            itemCount: data.length,
-            itemBuilder: (context, index) => TodoWidget(
-                description: data[index].description,
-                id: data[index].id,
-                title: data[index].title),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              // var a = localStorageNew.getString('token');
-              // print(a);
-              _openForm(context, reload);
-              //setState(() {});
-            },
-            child: const Icon(Icons.add),
-          ), // This trailing comma makes auto-formatting nicer for build methods.
-        );
-      },
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
+    return Scaffold(
+      appBar: AppBar(
+        // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text('TODO'),
       ),
-      error: (error, stackTrace) => const Center(
-        child: SizedBox(
-          width: double.infinity,
-          height: 50,
-          child: Text('Error'),
-        ),
+
+      body: StreamBuilder(
+        stream: ref.watch(homeRepositoryProvider).watchToDos(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) => TodoWidget(
+                  key: UniqueKey(),
+                  description: snapshot.data![index].description,
+                  id: snapshot.data![index].id,
+                  title: snapshot.data![index].title),
+            );
+          } else {
+            return Center(
+              child: Text('no data'),
+            );
+          }
+        },
       ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _openForm(context);
+        },
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
-  void _openForm(ctx, onTapping) {
+  void _openForm(ctx) {
     showDialog(
       context: context,
       builder: (ctx) => Dialog(
@@ -81,7 +71,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         child: SizedBox(
           width: 400,
           height: 400,
-          child: AddTodoForm(onTapping),
+          child: AddTodoForm(),
         ),
       ),
     );
@@ -89,8 +79,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
 }
 
 class AddTodoForm extends ConsumerStatefulWidget {
-  final VoidCallback onTapping;
-  AddTodoForm(this.onTapping);
+  AddTodoForm();
 
   @override
   _AddTodoFormState createState() => _AddTodoFormState();
@@ -156,7 +145,6 @@ class _AddTodoFormState extends ConsumerState<AddTodoForm> {
                             _titleController.text, _descriptionController.text);
                     print('success: $success');
                     if (success) {
-                      widget.onTapping();
                       Navigator.pop(context);
                       //context.pushNamed(AppRoute.home.name);
                     }

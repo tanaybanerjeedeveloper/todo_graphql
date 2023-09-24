@@ -43,6 +43,43 @@ query GetTodosByUser {
     }
   }
 
+  Stream<List> watchToDos() async* {
+    try {
+      QueryResult result = await util.getGQLAuthClient().query(
+          QueryOptions(fetchPolicy: FetchPolicy.networkOnly, document: gql('''
+query GetTodosByUser {
+  getTodosByUser {
+    id
+    description
+    title
+  }
+}
+
+''')));
+
+      if (result.hasException) {
+        throw Exception(result.exception);
+      }
+
+      List res = result.data?["getTodosByUser"];
+
+      if (res == null || res.isEmpty) {
+        yield [];
+      } else {
+        todos = res
+            .map<Todo>((item) => Todo(
+                description: item["description"],
+                id: item["id"],
+                title: item["title"]))
+            .toList();
+        yield todos;
+      }
+    } catch (error) {
+      print('error from repo');
+      throw Exception('Something went wrong');
+    }
+  }
+
   Future<void> createTodo(String? title, String? description) async {
     try {
       QueryResult result = await util.getGQLAuthClient().mutate(MutationOptions(
@@ -78,6 +115,11 @@ final homeRepositoryProvider = Provider<HomeRepository>((ref) {
 final fetchToDosProvider = FutureProvider<List>((ref) async {
   final homeRepository = ref.watch(homeRepositoryProvider);
   return homeRepository.fetchToDos();
+});
+
+final watchTodosProvider = StreamProvider<List>((ref) {
+  final homeRepository = ref.watch(homeRepositoryProvider);
+  return homeRepository.watchToDos();
 });
 
 // final createTodoProvider = FutureProvider<void>((ref) async {

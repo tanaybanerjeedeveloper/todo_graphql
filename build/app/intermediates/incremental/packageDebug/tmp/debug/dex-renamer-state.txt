@@ -1,4 +1,4 @@
-#Wed Sep 20 10:40:47 IST 2023
-base.0=/Users/tanaybanerjee/Desktop/apps/todo_graphql/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-path.0=classes.dex
+#Sun Sep 24 21:17:27 IST 2023
+base.0=/Users/tanaybanerjee/Desktop/todo_graphql/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
+path.0=classes.dex
