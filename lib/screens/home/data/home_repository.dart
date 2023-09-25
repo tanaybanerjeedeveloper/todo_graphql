@@ -106,6 +106,31 @@ query GetTodosByUser {
       throw Exception('something went wrong!!');
     }
   }
+
+  Future<void> deleteTodo(String? todoId) async {
+    try {
+      QueryResult result = await util.getGQLAuthClient().mutate(MutationOptions(
+            fetchPolicy: FetchPolicy.networkOnly,
+            document: gql('''
+mutation Mutation(\$todoId: ID!) {
+  deleteTodo(todoId: \$todoId)
+}
+'''),
+            variables: {"todoId": todoId},
+          ));
+      if (result.hasException) {
+        throw Exception(result.exception);
+      } else {
+        // var data = result.data?["createTodo"];
+        // Todo todoData.title = data
+        print('success from repo');
+      }
+    } catch (error) {
+      print('failed from repo');
+
+      throw Exception('something went wrong!!');
+    }
+  }
 }
 
 final homeRepositoryProvider = Provider<HomeRepository>((ref) {
@@ -121,6 +146,8 @@ final watchTodosProvider = StreamProvider<List>((ref) {
   final homeRepository = ref.watch(homeRepositoryProvider);
   return homeRepository.watchToDos();
 });
+
+
 
 // final createTodoProvider = FutureProvider<void>((ref) async {
 //    final homeRepository = ref.watch(homeRepositoryProvider);

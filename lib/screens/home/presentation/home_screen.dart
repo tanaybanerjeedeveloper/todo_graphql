@@ -54,10 +54,12 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) => TodoWidget(
-                  //key: UniqueKey(),
-                  description: snapshot.data![index].description,
-                  id: snapshot.data![index].id,
-                  title: snapshot.data![index].title),
+                //key: UniqueKey(),
+                description: snapshot.data![index].description,
+                id: snapshot.data![index].id,
+                title: snapshot.data![index].title,
+                onTapBtn: reload,
+              ),
             );
           } else {
             return Center(
@@ -162,6 +164,11 @@ class _AddTodoFormState extends ConsumerState<AddTodoForm> {
                     if (success) {
                       widget.onTapping();
                       Navigator.pop(context);
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('Todo created successfully'),
+                        backgroundColor: Colors.deepPurple,
+                        behavior: SnackBarBehavior.floating,
+                      ));
                       //context.pushNamed(AppRoute.home.name);
                     }
                   },
