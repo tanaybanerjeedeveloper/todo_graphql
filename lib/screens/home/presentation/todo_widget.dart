@@ -5,11 +5,11 @@ class TodoWidget extends StatelessWidget {
   final String description;
   final String id;
 
-  TodoWidget(
-      {required this.description,
-      required this.id,
-      required this.title,
-      required key});
+  TodoWidget({
+    required this.description,
+    required this.id,
+    required this.title,
+  });
 
   @override
   Widget build(BuildContext context) {

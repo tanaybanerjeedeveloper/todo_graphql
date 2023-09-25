@@ -12,16 +12,29 @@ class MyHomePage extends ConsumerStatefulWidget {
 }
 
 class _MyHomePageState extends ConsumerState<MyHomePage> {
-  //late Stream dataValue;
+  late Stream dataStream;
 
   // Stream _getData() async* {
   //   dataValue = await ref.watch(homeRepositoryProvider).watchToDos();
   //   yield dataValue;
   // }
 
+  Stream getStream() {
+    dataStream = ref.watch(homeRepositoryProvider).watchToDos();
+    return dataStream;
+  }
+
+  void reload() {
+    setState(() {
+      dataStream = ref.watch(homeRepositoryProvider).watchToDos();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     print('object');
+
+    // final Stream dataStream = ref.watch(homeRepositoryProvider).watchToDos();
 
     return Scaffold(
       appBar: AppBar(
@@ -30,7 +43,8 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
       ),
 
       body: StreamBuilder(
-        stream: ref.watch(homeRepositoryProvider).watchToDos(),
+        // stream: dataStream,
+        stream: getStream(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -40,7 +54,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) => TodoWidget(
-                  key: UniqueKey(),
+                  //key: UniqueKey(),
                   description: snapshot.data![index].description,
                   id: snapshot.data![index].id,
                   title: snapshot.data![index].title),
@@ -55,14 +69,14 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
 
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          _openForm(context);
+          _openForm(context, reload);
         },
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
-  void _openForm(ctx) {
+  void _openForm(ctx, reload) {
     showDialog(
       context: context,
       builder: (ctx) => Dialog(
@@ -71,7 +85,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         child: SizedBox(
           width: 400,
           height: 400,
-          child: AddTodoForm(),
+          child: AddTodoForm(onTapping: reload),
         ),
       ),
     );
@@ -79,7 +93,8 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
 }
 
 class AddTodoForm extends ConsumerStatefulWidget {
-  AddTodoForm();
+  final VoidCallback onTapping;
+  AddTodoForm({required this.onTapping});
 
   @override
   _AddTodoFormState createState() => _AddTodoFormState();
@@ -145,6 +160,7 @@ class _AddTodoFormState extends ConsumerState<AddTodoForm> {
                             _titleController.text, _descriptionController.text);
                     print('success: $success');
                     if (success) {
+                      widget.onTapping();
                       Navigator.pop(context);
                       //context.pushNamed(AppRoute.home.name);
                     }

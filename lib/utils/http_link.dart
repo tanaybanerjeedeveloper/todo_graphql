@@ -4,12 +4,19 @@ import 'package:todo_graphql_app/utils/local_storage.dart';
 
 class Util {
   var a = localStorageNew.getString('token');
-  static HttpLink link = HttpLink("http://localhost:8000/graphql");
+  // static HttpLink link = HttpLink("http://localhost:8000/graphql");
+  static HttpLink link = HttpLink("http://192.168.29.149/graphql");
 
   late Link authLink;
 
+  // Link setAuthLink() {
+  //   authLink = HttpLink("http://localhost:8000/graphql",
+  //       defaultHeaders: {'Authorization': 'Bearer $a'});
+  //   return authLink;
+  // }
+
   Link setAuthLink() {
-    authLink = HttpLink("http://localhost:8000/graphql",
+    authLink = HttpLink("http://192.168.29.149/graphql",
         defaultHeaders: {'Authorization': 'Bearer $a'});
     return authLink;
   }
