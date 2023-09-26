@@ -131,6 +131,35 @@ mutation Mutation(\$todoId: ID!) {
       throw Exception('something went wrong!!');
     }
   }
+
+  Future<void> updateTodo(
+      String? id, String? title, String? description) async {
+    try {
+      QueryResult result = await util.getGQLAuthClient().mutate(MutationOptions(
+            fetchPolicy: FetchPolicy.networkOnly,
+            document: gql('''
+mutation Mutation(\$id: ID!, \$title: String, \$description: String) {
+  editTodo(_id: \$id, title: \$title, description: \$description) {
+    title
+    description
+  }
+}
+'''),
+            variables: {"id": id, "title": title, "description": description},
+          ));
+      if (result.hasException) {
+        throw Exception(result.exception);
+      } else {
+        // var data = result.data?["createTodo"];
+        // Todo todoData.title = data
+        print('success from repo');
+      }
+    } catch (error) {
+      print('failed from repo');
+
+      throw Exception('something went wrong!!');
+    }
+  }
 }
 
 final homeRepositoryProvider = Provider<HomeRepository>((ref) {

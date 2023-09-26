@@ -34,6 +34,20 @@ class HomeController extends StateNotifier<AsyncValue> {
       return false;
     }
   }
+
+  Future<bool> updateTodo(String id, String title, String description) async {
+    try {
+      state = const AsyncValue.loading();
+      await homeRepository.updateTodo(id, title, description);
+      state = const AsyncValue.data(null);
+      print('success from controller');
+      return true;
+    } catch (e, st) {
+      state = AsyncValue.error(e, st);
+      print('failure from controller');
+      return false;
+    }
+  }
 }
 
 final homeControllerProvider =

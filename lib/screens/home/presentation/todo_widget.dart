@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_graphql_app/screens/home/presentation/home_controller.dart';
+import 'package:todo_graphql_app/screens/home/presentation/home_screen.dart';
+import 'package:todo_graphql_app/widgets/updatetodo_form.dart';
 
 class TodoWidget extends ConsumerStatefulWidget {
   final String title;
@@ -47,7 +49,17 @@ class _TodoWidgetState extends ConsumerState<TodoWidget> {
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
+              IconButton(
+                  onPressed: () async {
+                    _openForm(context, widget.onTapBtn, widget.id, widget.title,
+                        widget.description);
+                    // final success = await ref
+                    //     .read(homeControllerProvider.notifier)
+                    //     .updateTodo(
+                    //         widget.id, widget.title, widget.description);
+                    // print('success: $success');
+                  },
+                  icon: const Icon(Icons.edit)),
               IconButton(
                   onPressed: () async {
                     final success = await ref
@@ -67,6 +79,22 @@ class _TodoWidgetState extends ConsumerState<TodoWidget> {
             ],
           ),
         )),
+      ),
+    );
+  }
+
+  void _openForm(ctx, reload, String id, String title, String description) {
+    showDialog(
+      context: context,
+      builder: (ctx) => Dialog(
+        insetPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        // insetPadding: EdgeInsets.all(),
+        child: SizedBox(
+          width: 400,
+          height: 400,
+          child: UpdateTodoForm(
+              onTapBtn: reload, description: description, id: id, title: title),
+        ),
       ),
     );
   }

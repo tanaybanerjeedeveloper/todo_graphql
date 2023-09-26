@@ -51,16 +51,20 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) => TodoWidget(
-                //key: UniqueKey(),
-                description: snapshot.data![index].description,
-                id: snapshot.data![index].id,
-                title: snapshot.data![index].title,
-                onTapBtn: reload,
-              ),
-            );
+            return (snapshot.data!.length == 0)
+                ? const Center(
+                    child: Text('No Todos are there'),
+                  )
+                : ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) => TodoWidget(
+                      //key: UniqueKey(),
+                      description: snapshot.data![index].description,
+                      id: snapshot.data![index].id,
+                      title: snapshot.data![index].title,
+                      onTapBtn: reload,
+                    ),
+                  );
           } else {
             return Center(
               child: Text('no data'),
